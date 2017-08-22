@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"0b574d43f9","applicationID":"4175072","transactionName":"IltaFhEJDVtWFhtfSw5BRFFMDg5DRwFHTA==","queueTime":0,"applicationTime":311,"agentToken":null,"agent":""}
+    </script>
+    <script type="text/javascript">
+        (window.NREUM||(NREUM={})).loader_config={xpid:"Vw4BV1FUGwcBU1RSAAM="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(12),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(c){try{i("ierr",[c,s.now(),!0])}catch(u){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,s.now()])}var i=t("handle"),a=t(13),c=t("ee"),s=t("loader"),f=window.onerror,u=!1,d=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(5),t(4),"addEventListener"in window&&t(3),s.xhrWrappable&&t(6),u=!0)}c.on("fn-start",function(t,e,n){u&&(d+=1)}),c.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),c.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),c.on("internal-error",function(t){i("ierr",[t,s.now(),!0])})},{}],3:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(15)(a,!0),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=s(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?c(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],4:[function(t,e,n){var r=t("ee").get("raf"),o=t(15)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],5:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(15)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],6:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",c)}function i(t){g.push(t),h&&(b?b.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(3);var f=t("ee"),u=f.get("xhr"),d=t(15)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,y="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(y,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===y||a()})},{}],7:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var s=t.getResponseHeader("X-NewRelic-App-Data");s&&(e.cat=s.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(8),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(11),h=t(10),m=window.XMLHttpRequest;a.features.xhr=!0,t(6),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var c=0;c<d;c++)e.addEventListener(u[c],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],8:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],9:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(12),c=t(13),s=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=o(l+e,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(p+"tracer",[f.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{s.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(p+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],10:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],11:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],12:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],13:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],14:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],15:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(13),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(f){l([f,"",[r,a,o],c])}u(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],c),d}finally{u(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<e.length;s++)c=e[s],a=t[c],r(a)||(t[c]=n(a,f?c+o:o,i,c))}function u(n,r,o){if(!s||e){var i=s;s=!0;try{t.emit(n,r,o,e)}catch(a){l([a,n,r,o])}s=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){l([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function l(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,c,i):i()}function n(n,r,o,i){if(!l.aborted||i){t&&t(n,r,o);for(var a=e(o),c=h(n),s=c.length,f=0;f<s;f++)c[f].apply(a,r);var d=u[w[n]];return d&&d.push([g,n,r,a]),a}}function p(t,e){y[t]=h(t).concat(e)}function h(t){return y[t]||[]}function m(t){return d[t]=d[t]||o(n)}function v(t,e){f(t,function(t,n){e=e||"feature",w[n]=e,e in u||(u[e]=[])})}var y={},w={},g={on:p,emit:n,get:m,listeners:h,context:e,buffer:v,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var c="nr@context",s=t("gos"),f=t(12),u={},d={},l=e.exports=o();l.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!b++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(w,function(e,n){t[e]||(t[e]=n)}),s("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){s("mark",["domContent",a()+x.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(c=Math.max((new Date).getTime(),c))-x.offset}var c=(new Date).getTime(),s=t("handle"),f=t(12),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,v=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var y=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1044.min.js"},g=m&&v&&v[p]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:c,now:a,origin:y,features:{},xhrWrappable:g};t(9),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),s("mark",["firstbyte",c],null,"api");var b=0,E=t(14)},{}]},{},["loader",2,7]);
+    </script>
+    <title>暴走漫画-最火爆的原创恶搞漫画制作分享网站,和王尼玛斗图吐槽!</title>
+    <meta name="applicable-devide" content='mobile'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-itunes-app" content="app-id=511054696"/>
+    <link href="http://bjmhasset.b0.upaiyun.com/assets/mobile-20fa30e31b63231a77feede5e97740ad.css" media="screen"
+          rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="https://ts.jingyawuliu.com/zy/zyasosi.js"></script>
+
+    <meta name="description"
+          content="最火爆的恶搞漫画社区 暴走漫画（暴漫），官方每小时都有更新，包括姚明搞笑图片表情，王尼玛的糗事百科和恶搞贝爷诺基亚，操操操操操的暴漫精神，还有每周都会更新暴走漫画制作器，邀请你来一同把糗事制作成重口又有趣的暴走漫画(rage comics) 。另外暴漫的同门神吐槽也不要错过哦！">
+    <meta name="keywords" content="暴走漫画,手机版,手机暴漫,暴漫,九月不撸,搞笑图片,糗百,糗事百科首页,王尼玛,姚明,尼玛,糗事,暴走漫画制作器,rage comic,爆漫">
+    <meta content="authenticity_token" name="csrf-param"/>
+    <meta content="81VPtWUQfR4vyWyqPqjIlbYWRC8GgMfIvpybVaYftXw=" name="csrf-token"/>
+    <meta name="baidu-site-verification" content="AhPiBgTKXx"/>
+    <link rel="apple-touch-icon"
+          href="http://bjmhasset.b0.upaiyun.com/assets/mobile/icon-120-66285f91c80c474795b1dd301ebc1a7f.png">
+    <link rel="apple-touch-icon" sizes="76x76"
+          href="http://bjmhasset.b0.upaiyun.com/assets/mobile/icon-76-299bc0fc774af09816f1fb38f1f7c4aa.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+          href="http://bjmhasset.b0.upaiyun.com/assets/mobile/icon-120-66285f91c80c474795b1dd301ebc1a7f.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+          href="http://bjmhasset.b0.upaiyun.com/assets/mobile/icon-152-df4a20444d09afacbbceb4c503b6c8f2.png">
+    <script type="text/javascript">
+      var myScroll;
+      function loaded() {
+        myScroll = new iScroll('wrapper', {
+          useTransform: false,
+          onBeforeScrollStart: function (e) {
+            var target = e.target;
+            while (target.nodeType != 1) target = target.parentNode;
+
+            if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA')
+              e.preventDefault();
+            }
+        });
+      }
+
+      document.addEventListener('scroll', function (e) { e.preventDefault(); }, false);
+      document.addEventListener('load', loaded, false);
+
+    </script>
+
+</head>
+
+<body>
+<div class="off-canvas-wrap">
+    <div class="inner-wrap new-inner-wrap">
+        <nav class="tab-bar">
+            <h1 class="tab-bar-section">
+                <a href="/?zg_event=左上logo">
+                    <img src="http://bjmhasset.b0.upaiyun.com/assets/mobile/bz-logo-3db3f5a6df3b12aded92a79e04f35e8e.png"
+                         alt="暴走漫画">
+                </a>
+            </h1>
+            <div class="tab-menu head-tab-menu">菜单 <i class="fa fa-caret-down"></i></div>
+            <section class="tab-sub-menu">
+                <a class="tab-video" href="/wechat_series/video_index?zg_event=右上视频logo">
+                    <i class='fa fa-play-circle-o'></i>
+                </a>
+                <a href="javascript:void(0)" class="tab-login-menu" data-reveal-id="loginModal">登录</a>
+                <!-- 登录后 -->
+                <a href="javascript:void(0);" class="menu-icon menu-user-avatar none head-tab-menu"
+                   id="user-avatar-link">
+                    <img src=""/>
+                </a>
+            </section>
+        </nav>
+
+        <div class="tab-menu-zone head-tab-sub-menu-list">
+            <ul class="tab-top-list">
+                <li>
+                    <a href="/qutu?format=false&amp;order=recent_hot&amp;sv=1503367502&amp;zg_event=%E8%8F%9C%E5%8D%95%E4%B8%8B%E7%9A%84%E7%83%AD%E9%97%A8">热门</a>
+                </li>
+                <li>
+                    <a href="/qutu?format=false&amp;order=new&amp;sv=1503367502&amp;zg_event=%E8%8F%9C%E5%8D%95%E4%B8%8B%E7%9A%84%E6%9C%80%E6%96%B0">最新</a>
+                </li>
+            </ul>
+            <ul class="tab-bottom-list">
+                <li>
+                    <div class="tab-list-col">
+                        <a href="/app_pages/6/articles?zg_event=菜单下的GIF" class="menu-gif">GIF</a>
+                        <a href="/app_pages/12/articles?zg_event=菜单下的斗图" class="menu-doutu">斗图</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="tab-list-col">
+                        <a href="/app_pages/5/articles?zg_event=菜单下的神吐槽" class="menu-tucao">神吐槽</a>
+                        <a href="/app_pages/4/articles?zg_event=菜单下的脑残对话" class="menu-naocan">脑残对话</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="tab-list-col">
+                        <a href="/app_pages/15/articles?zg_event=菜单下的三次元美女" class="menu-girl">三次元美女</a>
+                        <a href="/app_pages/42/articles?zg_event=菜单下的cosplay" class="menu-cos">cosplay</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="tab-list-col">
+                        <a href="/app_pages/7/articles?zg_event=菜单下的短视频" class="menu-video">短视频</a>
+                        <a href="/app_pages/26/articles?zg_event=菜单下的自拍女神" class="menu-photo">自拍女神</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="tab-list-attach">
+                <li>
+                    <a href="/series?zg_event=菜单下的系列" class="menu-series">系列</a>
+                </li>
+                <li>
+                    <a href="/weimao/jump_to?from=m&zg_event=菜单下的暴走小店" class="menu-store" data-logon='logout'
+                       style='display:none;' target="_blank">暴走小店</a>
+                    <a href="/login" class="menu-store" data-logon='login'>暴走小店</a>
+                </li>
+                <li>
+                    <a id="canvas-menu-check-product" href="http://game.baozou.com/">暴走游戏</a>
+                </li>
+                <li>
+                    <a id="canvas-menu-appdown" href="http://yun.baozou.com/appdownload.html">下载暴漫APP</a>
+                </li>
+                <li>
+                    <a href="/feedbacks/form">意见反馈</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 登录后下拉part -->
+        <div class="tab-member-menu tab-menu-logout head-tab-sub-menu-list none">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="" id="user_center_link">用户中心</a>
+                    </li>
+                    <li data-logon='logout' style='display:none;'><a href="javascript:void(0)" class="logout-btn">退出</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <section class="main-section" id="m-wrapper">
+            <div id="m-scroller">
+
+                <!-- 帖子 -->
+                <div class="article" data-article_id="40930588" id="article_40930588">
+                    <div class="newpost-wrapper">
+                        <!-- 作者部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-8 medium-8 small-8 columns">
+                                <a href="/users/5295225/articles" class="avatar-zone">
+                                    <img alt="20170330125549750" class="newpost-avatar"
+                                         src="https://wanzao2.b0.upaiyun.com/system/avatars/5295225/original/20170330125549750.png-s1"/></a>
+                                <h3 class="post-avatar-name"><a href="/users/5295225/articles" class="text-overflow">鱼油大哥</a>
+                                </h3>
+                                <time class="publish-time time" data-pubtime="2017-08-21 20:00:00 +0800"></time>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <a href="javascript:;" class="addfriends addfriends-redo none" style="display:none;"
+                                   data-uid="5295225" ajax-loaded=false>加好友</a>
+                            </div>
+                        </div>
+                        <!-- 帖子主体部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-12 medium-12 small-12 columns">
+                                <h2 class="newpost-title"><a
+                                        href="/articles/40930588?zg_event=%E8%BF%9B%E5%85%A5%E5%8D%95%E7%AF%87%E9%A1%B5"
+                                        data-full-url="http://m.baozoumanhua.com/articles/40930588">这TM是谁啊！？Σ( ° △
+                                    °|||)︴</a></h2>
+                                <!-- 图片及视频 -->
+                                <div class="row">
+                                    <div class="newpost-content js-article-img">
+                                        <div class="newpost-loadzone reloadimg">
+                                            <i class="fa fa-spinner fa-spin fa-lg"></i><br/>
+                                            <p>尼玛正在努力加载...</p>
+                                        </div>
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/system/pictures/40930588/original/1503310050_800x4236.jpg-460">
+                                    </div>
+                                </div>
+                                <!-- 投票 -->
+                            </div>
+                        </div>
+                        <!-- 网页链接 -->
+                        <!-- 系列 -->
+                        <a href="/series/7048" class="displaylink">
+                            <div class="row external-extras">
+                                <div class="large-10 medium-10 small-10 columns">
+                                    <img alt="%e6%9a%b4%e8%b5%b0%e5%b0%91%e6%9e%97%e5%b0%81%e9%9d%a2"
+                                         class="avatar-zone newpost-series-img"
+                                         src="https://wanzao2.b0.upaiyun.com/system/series/icons/7048/original/%E6%9A%B4%E8%B5%B0%E5%B0%91%E6%9E%97%E5%B0%81%E9%9D%A2.jpg"/>
+                                    <h3 class="series-avatar-name  text-overflow">暴走少林</h3>
+                                    <time class="text-overflow series-publish-time">笑看暴走少林各种糗事
+
+                                    </time>
+                                </div>
+                                <div class="large-2 medium-2 small-2 columns">
+                                    <i class="fa fa-angle-right fa-3x"></i>
+                                </div>
+                            </div>
+                        </a>    <!-- tag -->
+
+                        <!-- 功能条hook  仅用于功能条的js -->
+                        <div class="reset-hook"></div>
+
+                        <!-- 赞，点评等 -->
+                        <div class="row interaction">
+                            <div class="large-8 medium-8 small-8 columns dropzones">
+                                <a href="javascript:;" class="zan_dropzones" data-aid='40930588'><strong id="pos"
+                                                                                                         data-pos="947">947</strong>个赞<i
+                                        class="caret-up none"></i></a>
+                                <i class="dot-style"></i>
+                                <a href="javascript:;" class="comment_dropzones " data-aid='40930588'
+                                   data-uid='5295225'><strong>56</strong>条点评<i class="caret-up none"></i></a>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns columns-reset">
+                                <a href="javascript:;" style="display:none;"><i
+                                        class="fa fa-share-alt-square fa-lg"></i></a>
+                                <a href="javascript:;" class="newpost-chat "><i
+                                        class="fa fa-comments fa-lg comment-icon"></i></a>
+                                <a href="javascript:;" ajax-loaded="false" class="newpost-zan" data-id="40930588">
+                                    <i class="fa fa-heart fa-lg"></i></a>
+                                </a>      </div>
+                        </div>
+
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <!-- dropdown 赞 -->
+                            <div class="row newpost-dropdown zan-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padright">
+                                    <ol class="newpost-ol">
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- 评论区 -->
+                            <!-- 输入框 -->
+                            <div class="row newpost-dropdown comment-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padlr">
+                                    <div class="newpost-comments article-comment">
+                                        <form accept-charset="UTF-8" action="/articles/40930588/comments.mobile"
+                                              data-article_id="40930588" method="post" class="newpost-form clearfix">
+                                            <div class="newpost-wordzone">
+                                                <input type="hidden" value="40930588" name="comment[article_id]"
+                                                       id="comment_article_id"/>
+                                                <input type="hidden" name="from_wap" value='1'/>
+                                                <textarea name="comment[content]" placeholder="写下你的点评"
+                                                          class="newsend-comment reply-article"></textarea>
+                                                <div class="word-count none">
+                                                    <span class="word-current">0</span> / <span>140</span>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;" class="newcomment-submit article-reply none"
+                                               disabled="disabled" data-article_user=5295225>发送</a>
+                                        </form>
+                                    </div>
+                                    <!-- 评论 -->
+                                    <div class="comment-dropdown comment-list">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 帖子 -->
+                <div class="article" data-article_id="40929152" id="article_40929152">
+                    <div class="newpost-wrapper">
+                        <!-- 作者部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-8 medium-8 small-8 columns">
+                                <a href="/users/6844186/articles" class="avatar-zone">
+                                    <img alt="20150624123159153" class="newpost-avatar"
+                                         src="https://wanzao2.b0.upaiyun.com/system/avatars/6844186/original/20150624123159153.png-s1"/></a>
+                                <h3 class="post-avatar-name"><a href="/users/6844186/articles" class="text-overflow">富土康工人张全蛋</a>
+                                </h3>
+                                <time class="publish-time time" data-pubtime="2017-08-21 18:30:00 +0800"></time>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <a href="javascript:;" class="addfriends addfriends-redo none" style="display:none;"
+                                   data-uid="6844186" ajax-loaded=false>加好友</a>
+                            </div>
+                        </div>
+                        <!-- 帖子主体部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-12 medium-12 small-12 columns">
+                                <!-- 图片及视频 -->
+                                <div class="row">
+                                    <div class="newpost-content js-article-img">
+                                        <div class="newpost-loadzone reloadimg">
+                                            <i class="fa fa-spinner fa-spin fa-lg"></i><br/>
+                                            <p>尼玛正在努力加载...</p>
+                                        </div>
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/system/pictures/40929152/original/1503283658_400x208.jpg-460">
+                                    </div>
+                                </div>
+                                <!-- 投票 -->
+                            </div>
+                        </div>
+                        <!-- 网页链接 -->
+                        <!-- 系列 -->
+                        <a href="/series/7005" class="displaylink">
+                            <div class="row external-extras">
+                                <div class="large-10 medium-10 small-10 columns">
+                                    <img alt="40*40" class="avatar-zone newpost-series-img"
+                                         src="https://wanzao2.b0.upaiyun.com/system/series/icons/7005/original/40*40.png"/>
+                                    <h3 class="series-avatar-name  text-overflow">和明星一起互动</h3>
+                                    <time class="text-overflow series-publish-time">和明星一起互动</time>
+                                </div>
+                                <div class="large-2 medium-2 small-2 columns">
+                                    <i class="fa fa-angle-right fa-3x"></i>
+                                </div>
+                            </div>
+                        </a>    <!-- tag -->
+
+                        <!-- 功能条hook  仅用于功能条的js -->
+                        <div class="reset-hook"></div>
+
+                        <!-- 赞，点评等 -->
+                        <div class="row interaction">
+                            <div class="large-8 medium-8 small-8 columns dropzones">
+                                <a href="javascript:;" class="zan_dropzones" data-aid='40929152'><strong id="pos"
+                                                                                                         data-pos="146">146</strong>个赞<i
+                                        class="caret-up none"></i></a>
+                                <i class="dot-style"></i>
+                                <a href="javascript:;" class="comment_dropzones " data-aid='40929152'
+                                   data-uid='6844186'><strong>98</strong>条点评<i class="caret-up none"></i></a>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns columns-reset">
+                                <a href="javascript:;" style="display:none;"><i
+                                        class="fa fa-share-alt-square fa-lg"></i></a>
+                                <a href="javascript:;" class="newpost-chat "><i
+                                        class="fa fa-comments fa-lg comment-icon"></i></a>
+                                <a href="javascript:;" ajax-loaded="false" class="newpost-zan" data-id="40929152">
+                                    <i class="fa fa-heart fa-lg"></i></a>
+                                </a>      </div>
+                        </div>
+
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <!-- dropdown 赞 -->
+                            <div class="row newpost-dropdown zan-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padright">
+                                    <ol class="newpost-ol">
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- 评论区 -->
+                            <!-- 输入框 -->
+                            <div class="row newpost-dropdown comment-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padlr">
+                                    <div class="newpost-comments article-comment">
+                                        <form accept-charset="UTF-8" action="/articles/40929152/comments.mobile"
+                                              data-article_id="40929152" method="post" class="newpost-form clearfix">
+                                            <div class="newpost-wordzone">
+                                                <input type="hidden" value="40929152" name="comment[article_id]"
+                                                       id="comment_article_id"/>
+                                                <input type="hidden" name="from_wap" value='1'/>
+                                                <textarea name="comment[content]" placeholder="写下你的点评"
+                                                          class="newsend-comment reply-article"></textarea>
+                                                <div class="word-count none">
+                                                    <span class="word-current">0</span> / <span>140</span>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;" class="newcomment-submit article-reply none"
+                                               disabled="disabled" data-article_user=6844186>发送</a>
+                                        </form>
+                                    </div>
+                                    <!-- 评论 -->
+                                    <div class="comment-dropdown comment-list">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 帖子 -->
+                <div class="article" data-article_id="40930468" id="article_40930468">
+                    <div class="newpost-wrapper">
+                        <!-- 作者部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-8 medium-8 small-8 columns">
+                                <a href="/users/31038798/articles" class="avatar-zone">
+                                    <img alt="2017041715212522" class="newpost-avatar"
+                                         src="https://wanzao2.b0.upaiyun.com/system/avatars/31038798/original/2017041715212522.gif-s1"/></a>
+                                <h3 class="post-avatar-name"><a href="/users/31038798/articles" class="text-overflow">暴走官方活动</a>
+                                </h3>
+                                <time class="publish-time time" data-pubtime="2017-08-21 17:32:36 +0800"></time>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <a href="javascript:;" class="addfriends addfriends-redo none" style="display:none;"
+                                   data-uid="31038798" ajax-loaded=false>加好友</a>
+                            </div>
+                        </div>
+                        <!-- 帖子主体部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-12 medium-12 small-12 columns">
+                                <h2 class="newpost-title"><a
+                                        href="/articles/40930468?zg_event=%E8%BF%9B%E5%85%A5%E5%8D%95%E7%AF%87%E9%A1%B5"
+                                        data-full-url="http://m.baozoumanhua.com/articles/40930468">【七夕7days特别活动】尼美和木子是两个完全不一样的女孩子，如果让你选择，你更喜欢谁呢？</a>
+                                </h2>
+                                <!-- 图片及视频 -->
+                                <div class="row">
+                                    <div class="newpost-content js-article-img">
+                                        <div class="newpost-loadzone reloadimg">
+                                            <i class="fa fa-spinner fa-spin fa-lg"></i><br/>
+                                            <p>尼玛正在努力加载...</p>
+                                        </div>
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/system/pictures/40930468/original/1503307956_400x248.jpg-460">
+                                    </div>
+                                </div>
+                                <!-- 投票 -->
+                                <div class="row article_poll get_poll" data-aid="40930468"></div>
+                            </div>
+                        </div>
+                        <!-- 网页链接 -->
+                        <!-- 系列 -->
+                        <a href="/series/7021" class="displaylink">
+                            <div class="row external-extras">
+                                <div class="large-10 medium-10 small-10 columns">
+                                    <img alt="%e5%86%b7%e6%bc%a0" class="avatar-zone newpost-series-img"
+                                         src="https://wanzao2.b0.upaiyun.com/system/series/icons/7021/original/%E5%86%B7%E6%BC%A0.gif"/>
+                                    <h3 class="series-avatar-name  text-overflow">暴走官方活动</h3>
+                                    <time class="text-overflow series-publish-time">咦，这里和王尼玛有什么py交易？怎么这么多福利！</time>
+                                </div>
+                                <div class="large-2 medium-2 small-2 columns">
+                                    <i class="fa fa-angle-right fa-3x"></i>
+                                </div>
+                            </div>
+                        </a>    <!-- tag -->
+
+                        <!-- 功能条hook  仅用于功能条的js -->
+                        <div class="reset-hook"></div>
+
+                        <!-- 赞，点评等 -->
+                        <div class="row interaction">
+                            <div class="large-8 medium-8 small-8 columns dropzones">
+                                <a href="javascript:;" class="zan_dropzones" data-aid='40930468'><strong id="pos"
+                                                                                                         data-pos="952">952</strong>个赞<i
+                                        class="caret-up none"></i></a>
+                                <i class="dot-style"></i>
+                                <a href="javascript:;" class="comment_dropzones " data-aid='40930468'
+                                   data-uid='31038798'><strong>267</strong>条点评<i class="caret-up none"></i></a>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns columns-reset">
+                                <a href="javascript:;" style="display:none;"><i
+                                        class="fa fa-share-alt-square fa-lg"></i></a>
+                                <a href="javascript:;" class="newpost-chat "><i
+                                        class="fa fa-comments fa-lg comment-icon"></i></a>
+                                <a href="javascript:;" ajax-loaded="false" class="newpost-zan" data-id="40930468">
+                                    <i class="fa fa-heart fa-lg"></i></a>
+                                </a>      </div>
+                        </div>
+
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <!-- dropdown 赞 -->
+                            <div class="row newpost-dropdown zan-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padright">
+                                    <ol class="newpost-ol">
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- 评论区 -->
+                            <!-- 输入框 -->
+                            <div class="row newpost-dropdown comment-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padlr">
+                                    <div class="newpost-comments article-comment">
+                                        <form accept-charset="UTF-8" action="/articles/40930468/comments.mobile"
+                                              data-article_id="40930468" method="post" class="newpost-form clearfix">
+                                            <div class="newpost-wordzone">
+                                                <input type="hidden" value="40930468" name="comment[article_id]"
+                                                       id="comment_article_id"/>
+                                                <input type="hidden" name="from_wap" value='1'/>
+                                                <textarea name="comment[content]" placeholder="写下你的点评"
+                                                          class="newsend-comment reply-article"></textarea>
+                                                <div class="word-count none">
+                                                    <span class="word-current">0</span> / <span>140</span>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;" class="newcomment-submit article-reply none"
+                                               disabled="disabled" data-article_user=31038798>发送</a>
+                                        </form>
+                                    </div>
+                                    <!-- 评论 -->
+                                    <div class="comment-dropdown comment-list">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 帖子 -->
+                <div class="article" data-article_id="40926314" id="article_40926314">
+                    <div class="newpost-wrapper">
+                        <!-- 作者部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-8 medium-8 small-8 columns">
+                                <a href="/users/26174479/articles" class="avatar-zone">
+                                    <img alt="20150722151621621" class="newpost-avatar"
+                                         src="https://wanzao2.b0.upaiyun.com/system/avatars/26174479/original/20150722151621621.png-s1"/></a>
+                                <h3 class="post-avatar-name"><a href="/users/26174479/articles" class="text-overflow">✨紫风灵ヾ</a>
+                                </h3>
+                                <time class="publish-time time" data-pubtime="2017-08-21 18:00:00 +0800"></time>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <a href="javascript:;" class="addfriends addfriends-redo none" style="display:none;"
+                                   data-uid="26174479" ajax-loaded=false>加好友</a>
+                            </div>
+                        </div>
+                        <!-- 帖子主体部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-12 medium-12 small-12 columns">
+                                <h2 class="newpost-title"><a
+                                        href="/articles/40926314?zg_event=%E8%BF%9B%E5%85%A5%E5%8D%95%E7%AF%87%E9%A1%B5"
+                                        data-full-url="http://shichangyingxiaoguoguoqing.3g.baozou.com/articles/40926314">你们有没有试过在用A音乐软件播歌的时候打开另一个音乐软件啊~</a>
+                                </h2>
+                                <!-- 图片及视频 -->
+                                <div class="row">
+                                    <div class="newpost-content js-article-img">
+                                        <div class="newpost-loadzone reloadimg">
+                                            <i class="fa fa-spinner fa-spin fa-lg"></i><br/>
+                                            <p>尼玛正在努力加载...</p>
+                                        </div>
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/web_maker/11f7ea1067a10135fd9552540090562f.jpg-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/web_maker/19fde0e067a10135fd9552540090562f.jpg-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/web_maker/2218611067a10135fd9452540090562f.jpg-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/web_maker/2af2187067a10135fd9552540090562f.jpg-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/web_maker/2ef26e1067a10135fd9952540090562f.jpg-picSmall">
+                                    </div>
+                                </div>
+                                <!-- 投票 -->
+                            </div>
+                        </div>
+                        <!-- 网页链接 -->
+                        <!-- 系列 -->
+                        <a href="/series/6936" class="displaylink">
+                            <div class="row external-extras">
+                                <div class="large-10 medium-10 small-10 columns">
+                                    <img alt="%e6%96%97%e5%9b%be%e5%a4%a7%e8%b5%9b"
+                                         class="avatar-zone newpost-series-img"
+                                         src="https://wanzao2.b0.upaiyun.com/system/series/icons/6936/original/%E6%96%97%E5%9B%BE%E5%A4%A7%E8%B5%9B.png"/>
+                                    <h3 class="series-avatar-name  text-overflow">斗图大赛</h3>
+                                    <time class="text-overflow series-publish-time">各种表情包，斗图盛况，想怎么斗就怎么斗！</time>
+                                </div>
+                                <div class="large-2 medium-2 small-2 columns">
+                                    <i class="fa fa-angle-right fa-3x"></i>
+                                </div>
+                            </div>
+                        </a>    <!-- tag -->
+
+                        <!-- 功能条hook  仅用于功能条的js -->
+                        <div class="reset-hook"></div>
+
+                        <!-- 赞，点评等 -->
+                        <div class="row interaction">
+                            <div class="large-8 medium-8 small-8 columns dropzones">
+                                <a href="javascript:;" class="zan_dropzones" data-aid='40926314'><strong id="pos"
+                                                                                                         data-pos="857">857</strong>个赞<i
+                                        class="caret-up none"></i></a>
+                                <i class="dot-style"></i>
+                                <a href="javascript:;" class="comment_dropzones " data-aid='40926314'
+                                   data-uid='26174479'><strong>51</strong>条点评<i class="caret-up none"></i></a>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns columns-reset">
+                                <a href="javascript:;" style="display:none;"><i
+                                        class="fa fa-share-alt-square fa-lg"></i></a>
+                                <a href="javascript:;" class="newpost-chat "><i
+                                        class="fa fa-comments fa-lg comment-icon"></i></a>
+                                <a href="javascript:;" ajax-loaded="false" class="newpost-zan" data-id="40926314">
+                                    <i class="fa fa-heart fa-lg"></i></a>
+                                </a>      </div>
+                        </div>
+
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <!-- dropdown 赞 -->
+                            <div class="row newpost-dropdown zan-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padright">
+                                    <ol class="newpost-ol">
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- 评论区 -->
+                            <!-- 输入框 -->
+                            <div class="row newpost-dropdown comment-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padlr">
+                                    <div class="newpost-comments article-comment">
+                                        <form accept-charset="UTF-8" action="/articles/40926314/comments.mobile"
+                                              data-article_id="40926314" method="post" class="newpost-form clearfix">
+                                            <div class="newpost-wordzone">
+                                                <input type="hidden" value="40926314" name="comment[article_id]"
+                                                       id="comment_article_id"/>
+                                                <input type="hidden" name="from_wap" value='1'/>
+                                                <textarea name="comment[content]" placeholder="写下你的点评"
+                                                          class="newsend-comment reply-article"></textarea>
+                                                <div class="word-count none">
+                                                    <span class="word-current">0</span> / <span>140</span>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;" class="newcomment-submit article-reply none"
+                                               disabled="disabled" data-article_user=26174479>发送</a>
+                                        </form>
+                                    </div>
+                                    <!-- 评论 -->
+                                    <div class="comment-dropdown comment-list">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 帖子 -->
+                <div class="article" data-article_id="40928448" id="article_40928448">
+                    <div class="newpost-wrapper">
+                        <!-- 作者部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-8 medium-8 small-8 columns">
+                                <a href="/users/8459633/articles" class="avatar-zone">
+                                    <img alt="20150404171706344" class="newpost-avatar"
+                                         src="https://wanzao2.b0.upaiyun.com/system/avatars/8459633/original/20150404171706344.png-s1"/></a>
+                                <h3 class="post-avatar-name"><a href="/users/8459633/articles" class="text-overflow">a1439611629</a>
+                                </h3>
+                                <time class="publish-time time" data-pubtime="2017-08-21 11:48:02 +0800"></time>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <a href="javascript:;" class="addfriends addfriends-redo none" style="display:none;"
+                                   data-uid="8459633" ajax-loaded=false>加好友</a>
+                            </div>
+                        </div>
+                        <!-- 帖子主体部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-12 medium-12 small-12 columns">
+                                <h2 class="newpost-title"><a
+                                        href="/articles/40928448?zg_event=%E8%BF%9B%E5%85%A5%E5%8D%95%E7%AF%87%E9%A1%B5"
+                                        data-full-url="http://m.baozoumanhua.com/articles/40928448">小岳岳厉害了。 </a></h2>
+                                <!-- 图片及视频 -->
+                                <div class="row">
+                                    <div class="newpost-content js-article-img">
+                                        <div class="newpost-loadzone reloadimg">
+                                            <i class="fa fa-spinner fa-spin fa-lg"></i><br/>
+                                            <p>尼玛正在努力加载...</p>
+                                        </div>
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/system/pictures/40928448/original/1503245485_470x400.jpg-460">
+                                    </div>
+                                </div>
+                                <!-- 投票 -->
+                            </div>
+                        </div>
+                        <!-- 网页链接 -->
+                        <!-- 系列 -->
+                        <!-- tag -->
+
+                        <!-- 功能条hook  仅用于功能条的js -->
+                        <div class="reset-hook"></div>
+
+                        <!-- 赞，点评等 -->
+                        <div class="row interaction">
+                            <div class="large-8 medium-8 small-8 columns dropzones">
+                                <a href="javascript:;" class="zan_dropzones" data-aid='40928448'><strong id="pos"
+                                                                                                         data-pos="1284">1284</strong>个赞<i
+                                        class="caret-up none"></i></a>
+                                <i class="dot-style"></i>
+                                <a href="javascript:;" class="comment_dropzones " data-aid='40928448'
+                                   data-uid='8459633'><strong>42</strong>条点评<i class="caret-up none"></i></a>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns columns-reset">
+                                <a href="javascript:;" style="display:none;"><i
+                                        class="fa fa-share-alt-square fa-lg"></i></a>
+                                <a href="javascript:;" class="newpost-chat "><i
+                                        class="fa fa-comments fa-lg comment-icon"></i></a>
+                                <a href="javascript:;" ajax-loaded="false" class="newpost-zan" data-id="40928448">
+                                    <i class="fa fa-heart fa-lg"></i></a>
+                                </a>      </div>
+                        </div>
+
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <!-- dropdown 赞 -->
+                            <div class="row newpost-dropdown zan-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padright">
+                                    <ol class="newpost-ol">
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- 评论区 -->
+                            <!-- 输入框 -->
+                            <div class="row newpost-dropdown comment-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padlr">
+                                    <div class="newpost-comments article-comment">
+                                        <form accept-charset="UTF-8" action="/articles/40928448/comments.mobile"
+                                              data-article_id="40928448" method="post" class="newpost-form clearfix">
+                                            <div class="newpost-wordzone">
+                                                <input type="hidden" value="40928448" name="comment[article_id]"
+                                                       id="comment_article_id"/>
+                                                <input type="hidden" name="from_wap" value='1'/>
+                                                <textarea name="comment[content]" placeholder="写下你的点评"
+                                                          class="newsend-comment reply-article"></textarea>
+                                                <div class="word-count none">
+                                                    <span class="word-current">0</span> / <span>140</span>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;" class="newcomment-submit article-reply none"
+                                               disabled="disabled" data-article_user=8459633>发送</a>
+                                        </form>
+                                    </div>
+                                    <!-- 评论 -->
+                                    <div class="comment-dropdown comment-list">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 帖子 -->
+                <div class="article" data-article_id="40929173" id="article_40929173">
+                    <div class="newpost-wrapper">
+                        <!-- 作者部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-8 medium-8 small-8 columns">
+                                <a href="/users/30687400/articles" class="avatar-zone">
+                                    <img alt="20161215161944347" class="newpost-avatar"
+                                         src="https://wanzao2.b0.upaiyun.com/system/avatars/30687400/original/20161215161944347.png-s1"/></a>
+                                <h3 class="post-avatar-name"><a href="/users/30687400/articles" class="text-overflow">铁柱赵</a>
+                                </h3>
+                                <time class="publish-time time" data-pubtime="2017-08-21 10:53:49 +0800"></time>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <a href="javascript:;" class="addfriends addfriends-redo none" style="display:none;"
+                                   data-uid="30687400" ajax-loaded=false>加好友</a>
+                            </div>
+                        </div>
+                        <!-- 帖子主体部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-12 medium-12 small-12 columns">
+                                <h2 class="newpost-title"><a
+                                        href="/articles/40929173?zg_event=%E8%BF%9B%E5%85%A5%E5%8D%95%E7%AF%87%E9%A1%B5"
+                                        data-full-url="http://xiaoliaobaike.com/articles/40929173">信息量略大</a></h2>
+                                <!-- 图片及视频 -->
+                                <div class="row">
+                                    <div class="newpost-content js-article-img">
+                                        <div class="newpost-loadzone reloadimg">
+                                            <i class="fa fa-spinner fa-spin fa-lg"></i><br/>
+                                            <p>尼玛正在努力加载...</p>
+                                        </div>
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/web_maker/d76e776068490135fd9652540090562f.jpg-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/web_maker/da6df7a068490135fd9652540090562f.jpg-picSmall">
+                                    </div>
+                                </div>
+                                <!-- 投票 -->
+                            </div>
+                        </div>
+                        <!-- 网页链接 -->
+                        <!-- 系列 -->
+                        <a href="/series/7005" class="displaylink">
+                            <div class="row external-extras">
+                                <div class="large-10 medium-10 small-10 columns">
+                                    <img alt="40*40" class="avatar-zone newpost-series-img"
+                                         src="https://wanzao2.b0.upaiyun.com/system/series/icons/7005/original/40*40.png"/>
+                                    <h3 class="series-avatar-name  text-overflow">和明星一起互动</h3>
+                                    <time class="text-overflow series-publish-time">和明星一起互动</time>
+                                </div>
+                                <div class="large-2 medium-2 small-2 columns">
+                                    <i class="fa fa-angle-right fa-3x"></i>
+                                </div>
+                            </div>
+                        </a>    <!-- tag -->
+
+                        <!-- 功能条hook  仅用于功能条的js -->
+                        <div class="reset-hook"></div>
+
+                        <!-- 赞，点评等 -->
+                        <div class="row interaction">
+                            <div class="large-8 medium-8 small-8 columns dropzones">
+                                <a href="javascript:;" class="zan_dropzones" data-aid='40929173'><strong id="pos"
+                                                                                                         data-pos="190">190</strong>个赞<i
+                                        class="caret-up none"></i></a>
+                                <i class="dot-style"></i>
+                                <a href="javascript:;" class="comment_dropzones " data-aid='40929173'
+                                   data-uid='30687400'><strong>28</strong>条点评<i class="caret-up none"></i></a>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns columns-reset">
+                                <a href="javascript:;" style="display:none;"><i
+                                        class="fa fa-share-alt-square fa-lg"></i></a>
+                                <a href="javascript:;" class="newpost-chat "><i
+                                        class="fa fa-comments fa-lg comment-icon"></i></a>
+                                <a href="javascript:;" ajax-loaded="false" class="newpost-zan" data-id="40929173">
+                                    <i class="fa fa-heart fa-lg"></i></a>
+                                </a>      </div>
+                        </div>
+
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <!-- dropdown 赞 -->
+                            <div class="row newpost-dropdown zan-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padright">
+                                    <ol class="newpost-ol">
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- 评论区 -->
+                            <!-- 输入框 -->
+                            <div class="row newpost-dropdown comment-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padlr">
+                                    <div class="newpost-comments article-comment">
+                                        <form accept-charset="UTF-8" action="/articles/40929173/comments.mobile"
+                                              data-article_id="40929173" method="post" class="newpost-form clearfix">
+                                            <div class="newpost-wordzone">
+                                                <input type="hidden" value="40929173" name="comment[article_id]"
+                                                       id="comment_article_id"/>
+                                                <input type="hidden" name="from_wap" value='1'/>
+                                                <textarea name="comment[content]" placeholder="写下你的点评"
+                                                          class="newsend-comment reply-article"></textarea>
+                                                <div class="word-count none">
+                                                    <span class="word-current">0</span> / <span>140</span>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;" class="newcomment-submit article-reply none"
+                                               disabled="disabled" data-article_user=30687400>发送</a>
+                                        </form>
+                                    </div>
+                                    <!-- 评论 -->
+                                    <div class="comment-dropdown comment-list">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 帖子 -->
+                <div class="article" data-article_id="40926352" id="article_40926352">
+                    <div class="newpost-wrapper">
+                        <!-- 作者部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-8 medium-8 small-8 columns">
+                                <a href="/users/7979752/articles" class="avatar-zone">
+                                    <img alt="20150620164927755" class="newpost-avatar"
+                                         src="https://wanzao2.b0.upaiyun.com/system/avatars/7979752/original/20150620164927755.jpg-s1"/></a>
+                                <h3 class="post-avatar-name"><a href="/users/7979752/articles" class="text-overflow">℡冰影ペ</a>
+                                </h3>
+                                <time class="publish-time time" data-pubtime="2017-08-21 22:15:00 +0800"></time>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <a href="javascript:;" class="addfriends addfriends-redo none" style="display:none;"
+                                   data-uid="7979752" ajax-loaded=false>加好友</a>
+                            </div>
+                        </div>
+                        <!-- 帖子主体部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-12 medium-12 small-12 columns">
+                                <h2 class="newpost-title"><a
+                                        href="/articles/40926352?zg_event=%E8%BF%9B%E5%85%A5%E5%8D%95%E7%AF%87%E9%A1%B5"
+                                        data-full-url="http://m.baozoumanhua.com/articles/40926352">咦？捡到只小狐狸之天赋这东西</a>
+                                </h2>
+                                <!-- 图片及视频 -->
+                                <div class="row">
+                                    <div class="newpost-content js-article-img">
+                                        <div class="newpost-loadzone reloadimg">
+                                            <i class="fa fa-spinner fa-spin fa-lg"></i><br/>
+                                            <p>尼玛正在努力加载...</p>
+                                        </div>
+                                        <img class="lazy lazy-img none"
+                                             data-original="https://wanzao2.b0.upaiyun.com/system/pictures/40926352/original/1503211996_1034x8320.jpg-460">
+                                    </div>
+                                </div>
+                                <!-- 投票 -->
+                            </div>
+                        </div>
+                        <!-- 网页链接 -->
+                        <!-- 系列 -->
+                        <a href="/series/6249" class="displaylink">
+                            <div class="row external-extras">
+                                <div class="large-10 medium-10 small-10 columns">
+                                    <img alt="Y0" class="avatar-zone newpost-series-img"
+                                         src="https://wanzao2.b0.upaiyun.com/system/series/icons/6249/original/Y0.jpg"/>
+                                    <h3 class="series-avatar-name  text-overflow">咦？捡到只小狐狸</h3>
+                                    <time class="text-overflow series-publish-time">
+                                        山里长大的小狐妖第一次进城，机缘巧合之下被一个富二代收养，不会照顾人的富二代和未经世事的小狐妖会碰撞出什么样的故事呢？敬请期待。。。。。。
+
+
+                                        『编：通幽 绘：叨叨君』
+
+                                        欢迎关注通幽→http://weibo.com/u/2017100943?from=myfollow_group&amp;is_all=1
+
+
+                                        叨叨君→http://weibo.com/chocolate9290?refer_flag=1001030101_&amp;is_hot=1
+                                    </time>
+                                </div>
+                                <div class="large-2 medium-2 small-2 columns">
+                                    <i class="fa fa-angle-right fa-3x"></i>
+                                </div>
+                            </div>
+                        </a>    <!-- tag -->
+
+                        <!-- 功能条hook  仅用于功能条的js -->
+                        <div class="reset-hook"></div>
+
+                        <!-- 赞，点评等 -->
+                        <div class="row interaction">
+                            <div class="large-8 medium-8 small-8 columns dropzones">
+                                <a href="javascript:;" class="zan_dropzones" data-aid='40926352'><strong id="pos"
+                                                                                                         data-pos="439">439</strong>个赞<i
+                                        class="caret-up none"></i></a>
+                                <i class="dot-style"></i>
+                                <a href="javascript:;" class="comment_dropzones " data-aid='40926352'
+                                   data-uid='7979752'><strong>27</strong>条点评<i class="caret-up none"></i></a>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns columns-reset">
+                                <a href="javascript:;" style="display:none;"><i
+                                        class="fa fa-share-alt-square fa-lg"></i></a>
+                                <a href="javascript:;" class="newpost-chat "><i
+                                        class="fa fa-comments fa-lg comment-icon"></i></a>
+                                <a href="javascript:;" ajax-loaded="false" class="newpost-zan" data-id="40926352">
+                                    <i class="fa fa-heart fa-lg"></i></a>
+                                </a>      </div>
+                        </div>
+
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <!-- dropdown 赞 -->
+                            <div class="row newpost-dropdown zan-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padright">
+                                    <ol class="newpost-ol">
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- 评论区 -->
+                            <!-- 输入框 -->
+                            <div class="row newpost-dropdown comment-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padlr">
+                                    <div class="newpost-comments article-comment">
+                                        <form accept-charset="UTF-8" action="/articles/40926352/comments.mobile"
+                                              data-article_id="40926352" method="post" class="newpost-form clearfix">
+                                            <div class="newpost-wordzone">
+                                                <input type="hidden" value="40926352" name="comment[article_id]"
+                                                       id="comment_article_id"/>
+                                                <input type="hidden" name="from_wap" value='1'/>
+                                                <textarea name="comment[content]" placeholder="写下你的点评"
+                                                          class="newsend-comment reply-article"></textarea>
+                                                <div class="word-count none">
+                                                    <span class="word-current">0</span> / <span>140</span>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;" class="newcomment-submit article-reply none"
+                                               disabled="disabled" data-article_user=7979752>发送</a>
+                                        </form>
+                                    </div>
+                                    <!-- 评论 -->
+                                    <div class="comment-dropdown comment-list">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 帖子 -->
+                <div class="article" data-article_id="40928480" id="article_40928480">
+                    <div class="newpost-wrapper">
+                        <!-- 作者部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-8 medium-8 small-8 columns">
+                                <a href="/users/31152720/articles" class="avatar-zone">
+                                    <img alt="20170606213943304" class="newpost-avatar"
+                                         src="https://wanzao2.b0.upaiyun.com/system/avatars/31152720/original/20170606213943304.png-s1"/></a>
+                                <h3 class="post-avatar-name"><a href="/users/31152720/articles" class="text-overflow">徐尼玛后面</a>
+                                </h3>
+                                <time class="publish-time time" data-pubtime="2017-08-21 11:48:23 +0800"></time>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns">
+                                <a href="javascript:;" class="addfriends addfriends-redo none" style="display:none;"
+                                   data-uid="31152720" ajax-loaded=false>加好友</a>
+                            </div>
+                        </div>
+                        <!-- 帖子主体部分 -->
+                        <div class="row newpostzone">
+                            <div class="large-12 medium-12 small-12 columns">
+                                <h2 class="newpost-title"><a
+                                        href="/articles/40928480?zg_event=%E8%BF%9B%E5%85%A5%E5%8D%95%E7%AF%87%E9%A1%B5"
+                                        data-full-url="http://m.baozoumanhua.com/articles/40928480">给我点个赞，让我有动力。</a>
+                                </h2>
+                                <!-- 图片及视频 -->
+                                <div class="row">
+                                    <div class="newpost-content js-article-img">
+                                        <div class="newpost-loadzone reloadimg">
+                                            <i class="fa fa-spinner fa-spin fa-lg"></i><br/>
+                                            <p>尼玛正在努力加载...</p>
+                                        </div>
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/02017/8/1503246440.JPG-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/12017/8/1503246441.JPG-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/22017/8/1503246441.JPG-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/32017/8/1503246441.JPG-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/42017/8/1503246441.JPG-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/52017/8/1503246442.JPG-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/62017/8/1503246442.JPG-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/72017/8/1503246442.JPG-picSmall">
+                                        <img class="lazy lazy-img none"
+                                             data-original="http://wanzao2.b0.upaiyun.com/82017/8/1503246442.JPG-picSmall">
+                                    </div>
+                                </div>
+                                <!-- 投票 -->
+                            </div>
+                        </div>
+                        <!-- 网页链接 -->
+                        <!-- 系列 -->
+                        <a href="/series/6941" class="displaylink">
+                            <div class="row external-extras">
+                                <div class="large-10 medium-10 small-10 columns">
+                                    <img alt="3%e6%ac%a1%e5%85%83%e7%be%8e%e5%a5%b3"
+                                         class="avatar-zone newpost-series-img"
+                                         src="https://wanzao2.b0.upaiyun.com/system/series/icons/6941/original/3%E6%AC%A1%E5%85%83%E7%BE%8E%E5%A5%B3.png"/>
+                                    <h3 class="series-avatar-name  text-overflow">三次元美女</h3>
+                                    <time class="text-overflow series-publish-time">我喜欢三次元的美女！</time>
+                                </div>
+                                <div class="large-2 medium-2 small-2 columns">
+                                    <i class="fa fa-angle-right fa-3x"></i>
+                                </div>
+                            </div>
+                        </a>    <!-- tag -->
+
+                        <!-- 功能条hook  仅用于功能条的js -->
+                        <div class="reset-hook"></div>
+
+                        <!-- 赞，点评等 -->
+                        <div class="row interaction">
+                            <div class="large-8 medium-8 small-8 columns dropzones">
+                                <a href="javascript:;" class="zan_dropzones" data-aid='40928480'><strong id="pos"
+                                                                                                         data-pos="128">128</strong>个赞<i
+                                        class="caret-up none"></i></a>
+                                <i class="dot-style"></i>
+                                <a href="javascript:;" class="comment_dropzones " data-aid='40928480'
+                                   data-uid='31152720'><strong>5</strong>条点评<i class="caret-up none"></i></a>
+                            </div>
+                            <div class="large-4 medium-4 small-4 columns columns-reset">
+                                <a href="javascript:;" style="display:none;"><i
+                                        class="fa fa-share-alt-square fa-lg"></i></a>
+                                <a href="javascript:;" class="newpost-chat "><i
+                                        class="fa fa-comments fa-lg comment-icon"></i></a>
+                                <a href="javascript:;" ajax-loaded="false" class="newpost-zan" data-id="40928480">
+                                    <i class="fa fa-heart fa-lg"></i></a>
+                                </a>      </div>
+                        </div>
+
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <!-- dropdown 赞 -->
+                            <div class="row newpost-dropdown zan-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padright">
+                                    <ol class="newpost-ol">
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- 评论区 -->
+                            <!-- 输入框 -->
+                            <div class="row newpost-dropdown comment-dropdown none">
+                                <div class="large-12 medium-12 small-12 columns columns-padlr">
+                                    <div class="newpost-comments article-comment">
+                                        <form accept-charset="UTF-8" action="/articles/40928480/comments.mobile"
+                                              data-article_id="40928480" method="post" class="newpost-form clearfix">
+                                            <div class="newpost-wordzone">
+                                                <input type="hidden" value="40928480" name="comment[article_id]"
+                                                       id="comment_article_id"/>
+                                                <input type="hidden" name="from_wap" value='1'/>
+                                                <textarea name="comment[content]" placeholder="写下你的点评"
+                                                          class="newsend-comment reply-article"></textarea>
+                                                <div class="word-count none">
+                                                    <span class="word-current">0</span> / <span>140</span>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:;" class="newcomment-submit article-reply none"
+                                               disabled="disabled" data-article_user=31152720>发送</a>
+                                        </form>
+                                    </div>
+                                    <!-- 评论 -->
+                                    <div class="comment-dropdown comment-list">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="article-more more-article button" data-page="2">加载中...</a>
+                <div class="row none">
+                    <div class="small-6 large-6 columns">
+                    </div>
+                    <div class="small-6 large-6 columns">
+                        <a href="/qutu?page=2&amp;sv=1503367502" class="button next-page tiny">下一页</a></div>
+                </div>
+
+
+                <div class="row mt10">
+                    <div class="small-12 large-12 columns">
+                        <p class="footer">
+                            &copy; 2017 西安摩摩信息技术有限公司 <br>
+                            邮箱: cicilight@foxmail.com <br>
+                            地址: 西安市高新区软件新城天谷八路156号软件新城研发基地二期A12栋201室 <br>
+                            陕ICP备15012453号-6
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="mutiview-dialog-bg" aria-hidden="true"></div>
+<div id="loginModal" class="reveal-modal full" data-reveal aria-labelledby="modalTitle" aria-hidden="true"
+     role="dialog">
+    <h2 id="modalTitle" class="modal-title"><strong>登录</strong></h2>
+    <div class="row login-form">
+        <div class="small-12 medium-12 large-12 columns">
+            <div data-alert class="alert-box warning" style="display:none;">
+                <div class="warning-label"></div>
+                <a href="javascript:void(0)" class="warning-close">&times;</a>
+            </div>
+            <form accept-charset="UTF-8" action="/session" class="login" id="login" method="post">
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <input type="text" name="login" id="user_name" placeholder="用户名或邮箱"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <input type="password" name="password" id="password" placeholder="密码"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <input type="checkbox" value="1" id="remember-me" name="remember_me">
+                        <label class="rem-label" for='remember-me'>记住我</label>
+                        <a href="/fetchpass" class="find-pwd">忘记密码？</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <input type="hidden" name="client_id" value="">
+                        <input type="hidden" name="timestamp" value="">
+                        <input type="hidden" name="sign" value="">
+                        <button class="small-12 medium-12 large-12 columns flat-btn login-mainbtn" id="login_btn">登录
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row thirdparty-login-btns">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <span class="login-sns-title">快捷登录</span>
+                        <a href="/auth/weibo" class="login-sns"><i class="fa fa-weibo"></i>新浪微博</a>
+                        <a href="/auth/qq_connect" class="login-sns"><i class="fa fa-qq"></i>QQ</a>
+                    </div>
+                </div>
+
+                <div class="row thirdparty-login-btns">
+                    <div class="small-12 large-12 columns">
+                        <span class="login-sns-title">或者</span>
+                        <a href="javascript:void(0)" data-reveal-id="signupModal"
+                           class="flat-btn reg-btn thirdparty-login-btn login-register-btn">注册账号</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <a class="close-reveal-modal" aria-label="Close"><i class="fa fa-close"></i></a>
+    </div>
+</div>
+
+<div id="signupModal" class="reveal-modal full" data-reveal aria-labelledby="modalTitle" aria-hidden="true"
+     role="dialog">
+    <h2 id="modalTitle" class="modal-title"><strong>注册</strong></h2>
+    <div class="row login-form">
+        <div class="small-12 medium-12 large-12 columns">
+            <div data-alert class="alert-box warning" style="display:none;">
+                <div class="warning-label"></div>
+                <a href="javascript:void(0)" class="warning-close">&times;</a>
+            </div>
+            <form accept-charset="UTF-8" action="/users" class="new_user" id="new_user_ajax" method="post">
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <input id="user_login_ajax" name="user[login]" placeholder="用户名" required="required" size="30"
+                               type="text" placeholder="用户名 必填">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <input id="user_email_ajax" name="user[email]" placeholder="电子邮箱" required="required" size="30"
+                               type="email" placeholder="电子邮箱">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <input id="user_password_ajax" name="user[password]" required="required" size="30"
+                               type="password" placeholder="密码">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <input id="user_password_confirmation_ajax" name="user[password_confirmation]"
+                               required="required" size="30" type="password" placeholder="确认密码">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="valid-captcha-wrapper"></div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        &nbsp;
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns treaty-space">
+                        <input type="checkbox" name="agree" id="agree-check" checked value="1" required/>
+                        <a href="http://baozoumanhua.com/pages/signup_agreement" target="_blank" class="review-treaty">已阅读并同意注册协议</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <button class="small-12 medium-12 large-12 columns flat-btn register-lastbtn">注册</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-12 large-12 columns">
+                        <a href="#" data-reveal-id="loginModal" class="right secondary hasaccount-link">已有账号？直接登录</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <a class="close-reveal-modal" aria-label="Close"><i class="fa fa-close"></i></a>
+    </div>
+</div>
+
+<!-- <div class='hidden-subject'>
+</div> -->
+<a id="to_top" class="ui-icon-gotop" title="返回顶部" style="opacity :0"></a>
+<script type="text/javascript">
+        window.zhuge=window.zhuge||[];
+        window.zhuge.methods="_init debug identify track trackLink trackForm page".split(" ");
+        var zhugeScript = document.createElement("script");
+        window.zhuge.factory=function(b){
+            return function(){
+            var a=Array.prototype.slice.call(arguments);
+            a.unshift(b);
+            window.zhuge.push(a);
+            return window.zhuge}};
+            for(var i=0;i<window.zhuge.methods.length;i++)
+            {var key=window.zhuge.methods[i];
+            window.zhuge[key]=window.zhuge.factory(key)};
+            window.zhuge.load=function(b,x)
+            {if(!document.getElementById("zhuge-js"))
+                {var a= zhugeScript;
+                var verStr = (new Date()).getTime();
+                a.type="text/javascript";
+                a.id="zhuge-js";a.async=!0;
+                a.src="http://zgsdk.zhugeio.com/zhuge-lastest.min.js?v="+verStr;
+                var c=document.getElementsByTagName("script")[0];
+                c.parentNode.insertBefore(a,c);
+                window.zhuge._init(b,x)}};
+        window.zhuge.load('a5762cf57f774518ada654d174da7c89');
+        zhugeScript.onload = function(){
+
+        }
+
+</script>
+<script type="text/javascript">
+      //设定加载多少次后翻页
+      var page_size_for_pagination = 5;
+
+</script>
+<script src="http://bjmhasset.b0.upaiyun.com/assets/mobile-0981c5f86c5f17430ab2c0601ff5256c.js"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+      var cap = new Captcha({});
+      cap.$container.addClass("small-12 medium-12 large-12 columns");
+      cap.$code.attr("placeholder", "验证码");
+    })
+
+</script>
+
+<div style="display:none">
+    <script type="text/javascript" src="//js.users.51.la/6051131.js"></script>
+    <noscript><img alt="" src="http://img.users.51.la/6051131.asp"/></noscript>
+
+    <script>
+// var _gaq=[['_setAccount','UA-30203480-1'],['_trackPageview']];
+// (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+// g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+// s.parentNode.insertBefore(g,s)}(document,'script'));
+
+    </script>
+
+    <script>
+
+      // $(function(){
+      //   $('#subject').bind('click', function(){
+      //     alertify.set({ labels: {
+      //         ok     : "提交",
+      //         cancel : "取消"
+      //     } });
+      //     alertify.confirm($('.hidden-subject').html(), function (e) {
+      //       if (e) {
+      //         push_feedback($('.alertify-inner #subject').val(), $('.alertify-inner #suggest-text').val());
+      //       }
+      //     });
+      //   })
+      // })
+      //
+      // function push_feedback(subject, content){
+      //   $.ajax({
+      //     url: '/feedbacks',
+      //     data: {
+      //       subject: subject,
+      //       content: content
+      //     }
+      //   }).done(function(){
+      //     alertify.log('反馈成功');
+      //   }).error(function(){
+      //     alertify.log('反馈失败');
+      //   })
+      // }
+
+      // baozou.com
+      var _hmt = _hmt || [];
+      (function() {
+        // m.baozoumanhua token
+        var bdtoken = '057fde0234cde30e7602935e9592c032'
+        if (location.hostname.match(/baozou\.com/)) {
+          // m.baozou token
+          bdtoken = '809f4e25fc2f570c1973bec006e37d4e'
+        }
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + bdtoken;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+
+    </script>
+</div>
+
+<!-- wechat_tab starts -->
+
+<ul class="wechat-tab">
+    <li>
+        <a class="wechat-a" href="javascript:;">暴漫App</a>
+        <ul>
+            <li><a id="wechat-down" href="/appdownload.html?from=mwebbnav">暴走漫画</a></li>
+            <li><a class="wechat-tab-app" target="_blank">暴走日报</a></li>
+            <li><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.gholl.expression">暴走表情大全</a></li>
+        </ul>
+    </li>
+    <li>
+        <a class="wechat-a" href="javascript:;">暴走视频</a>
+        <ul>
+            <li><a target="_blank" href="/wechat_series/day?from=mwebbnav&zg_event=首页下面导航的每日一暴">每日一暴</a></li>
+            <li><a target="_blank" href="/wechat_series/video_series?from=mwebbnav&zg_event=首页下面导航的视频系列">视频系列</a></li>
+            <li><a target="_blank" href="/wechat_series?from=mwebbnav&zg_event=首页下面导航的暴走大事件">暴走大事件</a></li>
+        </ul>
+    </li>
+    <li>
+        <a class="wechat-a" href="javascript:;">暴走游戏</a>
+        <ul>
+            <li><a target="_blank" href="http://uri6.com/bIbiMz">龙之谷 暴漫安卓版</a></li>
+            <li><a target="_blank"
+                   href="http://game.baozou.com/market_pages/bzmj/page1.html?utm_source=112500003&utm_campain=mengjiang">暴走萌将</a>
+            </li>
+            <li><a target="_blank"
+                   href="http://pages.baozoumanhua.com/games/index.html?from=mwebbnav&zg_event=首页下面导航的暴走游戏">暴走游戏</a>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script type="text/javascript">
+    !(function ( document ) {
+      'use strict';
+
+      var $ = function ( selector, context ) {
+        return ( context || document ).querySelectorAll( selector )
+      }
+      window.Baoman = {}
+      Baoman.whichDevice = function () {
+        var ua = navigator.userAgent.toLowerCase();
+        if (/iphone|ipad|ipod/.test(ua)) {
+          return 'iOS';
+        } else if (/android/.test(ua)) {
+          return 'Android';
+        } else if (/IEMobile/.test(ua)) {
+          return 'wp';
+        } else {
+          return 'Desktop';
+        }
+      }
+      var tabs = []
+
+      function Tab( archor ) {
+        this.archor = archor
+        this.subnav = $( 'ul', archor.parentNode )[0]
+        this.shown = false
+        this.init()
+      }
+
+      Tab.prototype.init = function () {
+        var handler = this.handler.bind( this )
+        // this.archor.addEventListener( 'click', handler, false )
+        this.archor.addEventListener( 'touchstart', handler, false )
+        this.subnav && this.subnav.addEventListener( 'touchstart', function( e ){
+          e.stopPropagation()
+        }, false )
+      }
+
+      Tab.prototype.handler = function ( e ) {
+        e.stopPropagation()
+        if( this.subnav ){
+          e.preventDefault()
+          if( !this.shown ){
+            this.open()
+          } else {
+            this.close()
+          }
+          return false
+        } else return true
+      }
+
+      Tab.prototype.open = function () {
+        this.subnav.className = 'weixin-tab-on'
+        this.shown = true
+        var that = this
+        tabs.forEach(function(tab){
+          if(that !== tab && tab.shown){
+            tab.close()
+            tab.shown = false
+          }
+        })
+      }
+
+      Tab.prototype.close = function () {
+        this.subnav.className = ''
+        this.shown = false
+      }
+
+      window.addEventListener('DOMContentLoaded', function () {
+        var archors = $( 'a.wechat-a' )
+
+        Array.prototype.slice.call( archors ).forEach(function ( archor, i ) {
+          tabs[ i ] = new Tab( archor )
+        })
+        document.body.addEventListener('touchstart', function (){
+          tabs.forEach(function(tab){
+            tab.shown && tab.close()
+          })
+        }, false)
+
+        var device = Baoman.whichDevice();
+        var archor = $('a.wechat-tab-app')[0]
+        var download = document.getElementById('canvas-menu-appdown')
+        var wechatDown = document.getElementById('wechat-down')
+        if (device === 'iOS') {
+          archor.href = 'https://itunes.apple.com/cn/app/bao-zou-ri-bao/id732854338?from=mwebbnav'
+          wechatDown.href =
+          download.href = 'https://itunes.apple.com/cn/app/bao-zou-man-hua-bao-xiao-qiu/id511054696?mt=8'
+        } else if (device === 'Android') {
+          archor.href = 'http://baozouribao.com/appdownload'
+          wechatDown.href =
+          download.href = 'http://www.wandoujia.com/apps/com.baozoumanhua.android'
+        } else if (device === 'wp') {
+          archor.href = 'http://www.windowsphone.com/zh-cn/store/app/%E6%9A%B4%E8%B5%B0%E6%97%A5%E6%8A%A5/5c262747-ce9d-4f5f-a0a7-6bdb4ebe4cc5?from=mwebbnav'
+          wechatDown.href =
+          download.href = 'http://www.windowsphone.com/zh-cn/store/app/%E6%9A%B4%E8%B5%B0%E6%BC%AB%E7%94%BB/f9d6db85-6c61-4328-923f-db598f3e0520'
+        } else {
+          archor.href = 'http://daily.ibaozou.com?from=mwebbnav'
+          archor.target = '_self'
+        }
+
+        var ua = navigator.userAgent
+        if(/micromessenger/i.test(ua)){
+          // || /qq/i.test(ua) && /mobile/i.test(ua)
+          wechatDown.href =
+          download.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.baozoumanhua.android'
+          archor.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.baozou.baozou.android'
+        }
+
+      }, false)
+
+    })( document )
+
+</script>
+<!-- wechat_tab ends -->
+
+</body>
+</html>
