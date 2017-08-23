@@ -13,6 +13,7 @@ import sys
 import requests
 import json
 from bs4 import BeautifulSoup
+from datetime import datetime as dt
 
 fakeheader = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36'
 
@@ -86,9 +87,9 @@ def get_res():
 
     res_list = soup.find('table', class_="d_r_t")
 
-    movies = res_list.find_all('tr', attrs={"day": "08-22"})
+    movies = res_list.find_all('tr', attrs={"day": dt_date})
 
-    print(len(movies))
+    # print(len(movies))
 
     for movie in movies:
         m_dict = {}
@@ -108,7 +109,7 @@ def get_res():
         m_dict['m_type'] = m_type
         m_dict['m_format'] = m_format
         m_dict['m_title'] = m_title
-        m_dict['m_detail'] = m_detail
+        m_dict['m_detail'] = "{}/{}".format(url, m_detail)
 
         # print(m_area)
         # print(m_type, m_format)
@@ -122,20 +123,42 @@ def get_res():
                 m_dict['dl'].append({'dl_name': dl.text, 'dl_url': dl['href']})
                 # print(dl)
 
-                if dl.text == '驴':
-                    print(m_title)
-                    print(dl['href'])
+                # if dl.text == '驴':
+                #     print(m_title)
+                #     print(dl['href'])
             except:
                 pass
 
         # print(json.dumps(m_dict))
-        print("\n")
+        # print("\n")
 
         items.append(m_dict)
 
+    return items
+
+
+def dumps():
+    items = get_res()
+
+    data_dir = 'data'
+    if not os.path.exists(data_dir):
+        os.makedirs(data_dir)
+
+    for item in items:
+        filename = os.path.join(data_dir, "{}.txt".format(item['m_title']))
+        with open(filename, 'w', encoding='utf-8') as f:
+            """
+                indent=4 : 格式化输出
+                ensure_ascii=False : unicode码转汉字
+            """
+            f.write(json.dumps(item, indent=1, ensure_ascii=False))
+
 
 if __name__ == "__main__":
+    dt_date = dt.strftime(dt.now(), "%m-%d")
     url = 'http://www.zimuzu.tv'
-    # s = login(url)
+    login(url)
+    get_today()
 
-    get_res()
+    # print(dt_date)
+    dumps()
