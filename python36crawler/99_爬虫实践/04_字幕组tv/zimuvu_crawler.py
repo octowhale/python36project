@@ -12,6 +12,7 @@ import os
 import sys
 import requests
 import json
+from bs4 import BeautifulSoup
 
 fakeheader = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36'
 
@@ -26,6 +27,8 @@ headers = {
     # 'Content-Type': 'application/html',
 }
 
+s = requests.Session()
+
 
 def login(url):
     """
@@ -33,7 +36,6 @@ def login(url):
     :param url:
     :return: s
     """
-    s = requests.Session()
 
     # login_url = '${}/user/login'.format(url)
     """
@@ -59,7 +61,7 @@ def login(url):
     return s
 
 
-def get_today(s):
+def get_today():
     # s = login(url)
     today_url = '{}/today'.format(url)
 
@@ -68,11 +70,72 @@ def get_today(s):
 
     r.encoding = r.apparent_encoding
 
-    print(r.text)
+    # print(r.text)
+
+    html = r.text
+
+    open('today.html', 'w', encoding='utf-8').write(html)
+
+
+def get_res():
+    items = []
+
+    html = open('today.html', 'r', encoding='utf-8').read()
+
+    soup = BeautifulSoup(html, 'lxml')
+
+    res_list = soup.find('table', class_="d_r_t")
+
+    movies = res_list.find_all('tr', attrs={"day": "08-22"})
+
+    print(len(movies))
+
+    for movie in movies:
+        m_dict = {}
+        """
+        使用选择器，可行
+        # m_type = movie.select('td.d1')[0].string
+        # m_format = movie.select('td.d2')[0].text
+        """
+        m_area = movie['area']
+        m_type = movie.find('td', class_="d1").text
+        m_format = movie.find('td', class_="d2").text
+
+        m_title = movie.find('a', attrs={"target": "_blank"}).text
+        m_detail = movie.find('a', attrs={"target": "_blank"})['href']
+
+        m_dict['area'] = m_area
+        m_dict['m_type'] = m_type
+        m_dict['m_format'] = m_format
+        m_dict['m_title'] = m_title
+        m_dict['m_detail'] = m_detail
+
+        # print(m_area)
+        # print(m_type, m_format)
+        # print(m_title, m_detail)
+
+        m_dict['dl'] = []
+        for dl in movie.find('td', class_="dr_ico").find_all('a'):
+            try:
+                # print("{} : {}".format(dl.text, dl['href']))
+
+                m_dict['dl'].append({'dl_name': dl.text, 'dl_url': dl['href']})
+                # print(dl)
+
+                if dl.text == '驴':
+                    print(m_title)
+                    print(dl['href'])
+            except:
+                pass
+
+        # print(json.dumps(m_dict))
+        print("\n")
+
+        items.append(m_dict)
 
 
 if __name__ == "__main__":
     url = 'http://www.zimuzu.tv'
-    s = login(url)
+    # s = login(url)
 
-    get_today(s)
+    get_res()

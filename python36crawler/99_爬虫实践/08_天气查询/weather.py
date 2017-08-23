@@ -34,12 +34,12 @@ def main(city):
     weather_info = today_info.find('li', class_="cDRed").text
     wind = today_info.find('li', attrs={"style": "height:18px;overflow:hidden"}).text
 
-    print(title)
-    print(time)
-    print(temperature)
-    print(weather_info)
-    print(wind)
-    print("\n")
+    # print(title)
+    # print(time)
+    # print(temperature)
+    # print(weather_info)
+    # print(wind)
+    # print("\n")
 
     print("{} {}\n{}\n{}\n{}\n".format(title, time, temperature, weather_info, wind))
 
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     # main('chengdu')
     # main('nanjing')
 
-    # main('成都')
+    main('成都')
     # main('chengdu')
     # main('chengde')
-    main('daying')
+    # main('daying')
