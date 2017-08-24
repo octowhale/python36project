@@ -23,17 +23,6 @@ lenfhd = len(fakeheader)
 
 headers = {'User-Agent': fakeheader[lenfhd - 1]}
 
-setting = json.load(open('user.json', 'r'))
-
-userinfo = {
-    "email": setting['email'],
-    "passwd": setting['passwd'],
-    "code": "",
-    "remember_me": "week"
-}
-
-site_url = setting['site_url']
-
 
 def login(url):
     """创建一个会话实例，将所有访问都模拟成为一次访问"""
@@ -56,6 +45,20 @@ def checkin(s, url):
 
 
 if __name__ == "__main__":
+
+    """进入脚本目录"""
+    os.chdir(os.path.join(sys.argv[0], '..'))
+
+    setting = json.load(open('user.json', 'r'))
+
+    userinfo = {
+        "email": setting['email'],
+        "passwd": setting['passwd'],
+        "code": "",
+        "remember_me": "week"
+    }
+
+    site_url = setting['site_url']
 
     login_url = '{}/auth/login'.format(site_url)
     user_url = '{}/user'.format(site_url)
