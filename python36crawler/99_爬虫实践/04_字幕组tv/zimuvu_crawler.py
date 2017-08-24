@@ -28,6 +28,8 @@ headers = {
     # 'Content-Type': 'application/html',
 }
 
+
+"""创建全局会话"""
 s = requests.Session()
 
 
@@ -45,9 +47,16 @@ def login(url):
     """
     login_url = '{}/User/Login/ajaxLogin'.format(url)
     # login_url = 'http://www.zimuzu.tv/user/sign'
-    userinfo = json.load(open('user.json'))
-    # print(userinfo)
+    try:
+        userinfo = json.load(open('user.json'))
+        # print(userinfo)
+    except:
+        with open('user.json', 'w', encoding='utf-8') as f:
+            f.write(json.dumps({"account": "your_account", "password": "your_password"}, indent=1))
+        print("读取账号密码失败，按照格式完善 user.json ")
+        sys.exit(1)
 
+    """登录"""
     r = s.post(login_url, data=userinfo, headers=headers)
     # r = s.post(login_url, data=userinfo)
 
@@ -55,7 +64,7 @@ def login(url):
     # r = s.get(login_url, timeout=3, headers=headers)
     r.raise_for_status()
 
-    result = json.loads(r.text)
+    # result = json.loads(r.text)
     # for k in result:
     #     print(k, result[k])
 
