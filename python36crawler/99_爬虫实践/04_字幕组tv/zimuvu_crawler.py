@@ -28,7 +28,6 @@ headers = {
     # 'Content-Type': 'application/html',
 }
 
-
 """创建全局会话"""
 s = requests.Session()
 
@@ -49,7 +48,6 @@ def login(url):
     # login_url = 'http://www.zimuzu.tv/user/sign'
     try:
         userinfo = json.load(open('user.json'))
-        # print(userinfo)
     except:
         with open('user.json', 'w', encoding='utf-8') as f:
             f.write(json.dumps({"account": "your_account", "password": "your_password"}, indent=1))
@@ -163,11 +161,42 @@ def dumps():
             f.write(json.dumps(item, indent=1, ensure_ascii=False))
 
 
+def dump_to_mongodb():
+    import pymongo
+
+    with open('mongo_auth.json') as f:
+        mongo_auth = json.load(f)
+        host, port = mongo_auth['host'], mongo_auth['port']
+    items = get_res()
+    with pymongo.MongoClient(host, port) as mongoclient:
+        db = mongoclient.zimuzu
+        for item in items:
+            db.today.insert(item)
+
+
+def get_detail():
+    uri = '/resource/list/35324'
+    detail_url = 'http://www.zimuzu.tv/resource/list/35324'
+
+    r = s.get(detail_url)
+
+    r.raise_for_status()
+
+    r.encoding = r.apparent_encoding
+
+    with open('35324.html', 'w', encoding='utf-8') as f:
+        f.write(r.text)
+
+
 if __name__ == "__main__":
-    dt_date = dt.strftime(dt.now(), "%m-%d")
+    # dt_date = dt.strftime(dt.now(), "%m-%d")
+    dt_date = dt.strftime(dt.now(), "08-27")
     url = 'http://www.zimuzu.tv'
     login(url)
     get_today()
-
     # print(dt_date)
-    dumps()
+    # dumps()
+
+    # get_detail()
+
+    dump_to_mongodb()
