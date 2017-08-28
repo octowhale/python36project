@@ -46,10 +46,15 @@ def login(url):
     """
     login_url = '{}/User/Login/ajaxLogin'.format(url)
     # login_url = 'http://www.zimuzu.tv/user/sign'
+
+    user_auth = os.path.join('auth', 'user.json')
     try:
-        userinfo = json.load(open('user.json'))
+        userinfo = json.load(open(user_auth, 'r'))
     except:
-        with open('user.json', 'w', encoding='utf-8') as f:
+        if not os.path.exists('auth'):
+            os.makedirs('auth')
+
+        with open(user_auth, 'w', encoding='utf-8') as f:
             f.write(json.dumps({"account": "your_account", "password": "your_password"}, indent=1))
         print("读取账号密码失败，按照格式完善 user.json ")
         sys.exit(1)
@@ -164,9 +169,10 @@ def dumps():
 def dump_to_mongodb():
     import pymongo
 
-    with open('mongo_auth.json') as f:
-        mongo_auth = json.load(f)
-        host, port = mongo_auth['host'], mongo_auth['port']
+    mongo_auth = os.path.join('auth', 'mongo_auth.json')
+    with open(mongo_auth, 'r') as f:
+        mongo_info = json.load(f)
+        host, port = mongo_info['host'], mongo_info['port']
     items = get_res()
     with pymongo.MongoClient(host, port) as mongoclient:
         db = mongoclient.zimuzu
