@@ -4,7 +4,7 @@
 
 """
 @python ver: Python 3.6
-@FILE: zimuvu_crawler.py
+@FILE: zimuzu_crawler.py
 @time: 2017/8/19 16:00
 """
 
@@ -110,6 +110,7 @@ def get_res():
         # m_type = movie.select('td.d1')[0].string
         # m_format = movie.select('td.d2')[0].text
         """
+
         m_area = movie['area']
         m_type = movie.find('td', class_="d1").text
         m_format = movie.find('td', class_="d2").text
@@ -117,6 +118,7 @@ def get_res():
         m_title = movie.find('a', attrs={"target": "_blank"}).text
         m_detail = movie.find('a', attrs={"target": "_blank"})['href']
 
+        m_dict['m_date'] = dt_date
         m_dict['area'] = m_area
         m_dict['m_type'] = m_type
         m_dict['m_format'] = m_format
@@ -177,8 +179,14 @@ def dump_to_mongodb():
     with pymongo.MongoClient(host, port) as mongoclient:
         db = mongoclient.zimuzu
         for item in items:
-            db.today.insert(item)
+            """插入方法，相同的数据会重复插入"""
+            # db.today.insert(item)
 
+            """更新插入方法，存在则更新，不存在则插入"""
+            db.today.update({"m_title": item['m_title']},
+                            item,
+                            upsert=True
+                            )
 
 def get_detail():
     uri = '/resource/list/35324'
@@ -193,10 +201,9 @@ def get_detail():
     with open('35324.html', 'w', encoding='utf-8') as f:
         f.write(r.text)
 
-
 if __name__ == "__main__":
-    # dt_date = dt.strftime(dt.now(), "%m-%d")
-    dt_date = dt.strftime(dt.now(), "08-27")
+    dt_date = dt.strftime(dt.now(), "%m-%d")
+    # dt_date = dt.strftime(dt.now(), "08-27")
     url = 'http://www.zimuzu.tv'
     login(url)
     get_today()
